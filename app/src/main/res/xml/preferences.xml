@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        app:key="magnitude_category"
+        app:title="Magnitude">
+
+        <EditTextPreference
+            android:defaultValue="@string/settings_min_magnitude_default"
+            app:key="@string/min_magnitude_key"
+            app:title="Min. Magnitude" />
+
+        <EditTextPreference
+            android:defaultValue="@string/settings_max_magnitude_default"
+            app:key="@string/max_magnitude_key"
+            app:title="Max. Magnitude" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="items_category"
+        app:title="Items">
+
+        <EditTextPreference
+            android:defaultValue="@string/settings_max_items_default"
+            app:key="@string/items_key"
+            app:title="Max. Items" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

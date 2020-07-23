@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Testing</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error">1%$i</string>
+    <string name="settings">Settings</string>
+    <string name="settings_min_magnitude_default" translatable="false">6</string>
+    <string name="settings_max_magnitude_default" translatable="false">12</string>
+    <string name="settings_max_items_default" translatable="false">30</string>
+    <string name="max_magnitude_key">com.example.testing.max_magnitude</string>
+    <string name="min_magnitude_key">com.example.testing.min_magnitude</string>
+    <string name="items_key">com.example.testing.items</string>
+</resources>
