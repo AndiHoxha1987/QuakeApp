@@ -1,5 +1,10 @@
 package com.example.testing.di;
 
+import android.content.SharedPreferences;
+
+import androidx.preference.PreferenceManager;
+
+import com.example.testing.AppApplication;
 import com.example.testing.util.Constants;
 
 import javax.inject.Singleton;

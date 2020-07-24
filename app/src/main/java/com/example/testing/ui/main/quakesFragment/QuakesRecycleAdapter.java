@@ -44,7 +44,7 @@ public class QuakesRecycleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         TextView magnitude;
         TextView locationOffset;
-        TextView primaryLocation;
+        TextView locationPrimary;
         TextView date;
         TextView time;
 
@@ -52,7 +52,7 @@ public class QuakesRecycleAdapter extends RecyclerView.Adapter<RecyclerView.View
             super(itemView);
             magnitude = itemView.findViewById(R.id.magnitude);
             locationOffset = itemView.findViewById(R.id.location_offset);
-            primaryLocation = itemView.findViewById(R.id.primary_location);
+            locationPrimary = itemView.findViewById(R.id.primary_location);
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
         }
@@ -61,8 +61,19 @@ public class QuakesRecycleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             String magnitudeString = formatMagnitude(properties.getQuake().getMagnitude());
             magnitude.setText(magnitudeString);
+            String location= properties.getQuake().getCityName();
+            String offset, primary;
+            if(!location.contains("of ")){
+                offset = "Near the";
+                primary = location;
+            }else {
+                offset = location.substring(0,(location.indexOf("of")));
+                primary = location.substring((location.indexOf("of")+3));
+            }
 
-            primaryLocation.setText(properties.getQuake().getCityName());
+            locationOffset.setText(offset);
+
+            locationPrimary.setText(primary);
 
             String dateString = formatDate(properties.getQuake().getTimeInMilliseconds());
             date.setText(dateString);
@@ -72,7 +83,7 @@ public class QuakesRecycleAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         private String formatMagnitude(double magnitude) {
-            DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
+            DecimalFormat magnitudeFormat = new DecimalFormat("0.00");
             return magnitudeFormat.format(magnitude);
         }
 
@@ -86,43 +97,44 @@ public class QuakesRecycleAdapter extends RecyclerView.Adapter<RecyclerView.View
             return timeFormat.format(milliseconds);
         }
 
-        private int getMagnitudeColor(double magnitude) {
-            int magnitudeColorResourceId;
-            int magnitudeFloor = (int) Math.floor(magnitude);
-            switch (magnitudeFloor) {
-                case 0:
-                case 1:
-                    magnitudeColorResourceId = R.color.magnitude1;
-                    break;
-                case 2:
-                    magnitudeColorResourceId = R.color.magnitude2;
-                    break;
-                case 3:
-                    magnitudeColorResourceId = R.color.magnitude3;
-                    break;
-                case 4:
-                    magnitudeColorResourceId = R.color.magnitude4;
-                    break;
-                case 5:
-                    magnitudeColorResourceId = R.color.magnitude5;
-                    break;
-                case 6:
-                    magnitudeColorResourceId = R.color.magnitude6;
-                    break;
-                case 7:
-                    magnitudeColorResourceId = R.color.magnitude7;
-                    break;
-                case 8:
-                    magnitudeColorResourceId = R.color.magnitude8;
-                    break;
-                case 9:
-                    magnitudeColorResourceId = R.color.magnitude9;
-                    break;
-                default:
-                    magnitudeColorResourceId = R.color.magnitude10plus;
-                    break;
-            }
-            return magnitudeColorResourceId;
+
+    }
+    private int getMagnitudeColor(double magnitude) {
+        int magnitudeColorResourceId;
+        int magnitudeFloor = (int) Math.floor(magnitude);
+        switch (magnitudeFloor) {
+            case 0:
+            case 1:
+                magnitudeColorResourceId = R.color.magnitude1;
+                break;
+            case 2:
+                magnitudeColorResourceId = R.color.magnitude2;
+                break;
+            case 3:
+                magnitudeColorResourceId = R.color.magnitude3;
+                break;
+            case 4:
+                magnitudeColorResourceId = R.color.magnitude4;
+                break;
+            case 5:
+                magnitudeColorResourceId = R.color.magnitude5;
+                break;
+            case 6:
+                magnitudeColorResourceId = R.color.magnitude6;
+                break;
+            case 7:
+                magnitudeColorResourceId = R.color.magnitude7;
+                break;
+            case 8:
+                magnitudeColorResourceId = R.color.magnitude8;
+                break;
+            case 9:
+                magnitudeColorResourceId = R.color.magnitude9;
+                break;
+            default:
+                magnitudeColorResourceId = R.color.magnitude10plus;
+                break;
         }
+        return magnitudeColorResourceId;
     }
 }

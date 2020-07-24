@@ -19,15 +19,19 @@ import retrofit2.Retrofit;
 @Module
 public class MainModule {
 
+
     @MainScope
     @Provides
     static QuakesRecycleAdapter provideAdapter(){
         return new QuakesRecycleAdapter();
     }
 
+
+
     @MainScope
     @Provides
     static MainApi provideMainApi(Retrofit retrofit){
         return retrofit.create(MainApi.class);
     }
+
 }

@@ -18,4 +18,5 @@ public abstract class MainViewModelsModule {
     public abstract ViewModel bindQuakesViewModel(QuakesViewModel viewModel);
 
 
+
 }

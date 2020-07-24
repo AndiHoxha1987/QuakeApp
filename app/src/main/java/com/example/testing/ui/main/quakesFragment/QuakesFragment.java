@@ -58,6 +58,7 @@ public class QuakesFragment extends DaggerFragment {
 
         initRecyclerView();
         subscribeObservers();
+        
     }
 
     private void subscribeObservers(){

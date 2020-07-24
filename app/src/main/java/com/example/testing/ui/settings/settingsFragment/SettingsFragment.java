@@ -12,6 +12,8 @@ import android.text.InputType;
 import android.widget.EditText;
 import com.example.testing.R;
 
+import javax.inject.Inject;
+
 /**
  * A simple {@link Fragment} subclass.
  *

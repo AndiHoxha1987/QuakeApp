@@ -10,7 +10,7 @@ public interface MainApi {
     @GET("query")
     Flowable<Features> getQuakes(
             @Query("format") String format,
-            @Query("orderby") String date,
+            @Query("orderby") String orderBy,
             @Query("limit") String limit,
             @Query("minmagnitude") String minMagnitude,
             @Query("maxmagnitude") String maxMagnitude

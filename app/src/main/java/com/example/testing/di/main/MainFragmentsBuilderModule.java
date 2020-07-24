@@ -11,3 +11,5 @@ public abstract class MainFragmentsBuilderModule {
     @ContributesAndroidInjector
     abstract QuakesFragment contributePostsFragment();
 }
+
+

@@ -1,5 +1,7 @@
 package com.example.testing.ui.main.quakesFragment;
 
+import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -8,6 +10,7 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+import com.example.testing.R;
 import com.example.testing.model.Features;
 import com.example.testing.model.Properties;
 import com.example.testing.model.Quake;
@@ -27,12 +30,15 @@ public class QuakesViewModel extends ViewModel {
     private static final String TAG = "QuakesViewModel";
 
     private final MainApi mainApi;
+    private Application application;
 
     private MediatorLiveData<Resource<Features>> quakes;
 
+
     @Inject
-    public QuakesViewModel(MainApi mainApi) {
+    public QuakesViewModel(MainApi mainApi, Application application) {
         this.mainApi = mainApi;
+        this.application = application;
         Log.d(TAG, "QuakesViewModel: ");
     }
 
@@ -41,9 +47,15 @@ public class QuakesViewModel extends ViewModel {
             quakes = new MediatorLiveData<>();
             quakes.setValue(Resource.loading((Features) null));
 
+            SharedPreferences preferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(application);
+            String items = preferences.getString(application.getResources().getString(R.string.items_key),application.getResources().getString(R.string.settings_max_items_default));
+            String minMagnitude = preferences.getString(application.getResources().getString(R.string.min_magnitude_key),application.getResources().getString(R.string.settings_min_magnitude_default));
+            String maxMagnitude = preferences.getString(application.getResources().getString(R.string.max_magnitude_key),application.getResources().getString(R.string.settings_max_magnitude_default));
+
             final LiveData<Resource<Features>> source = LiveDataReactiveStreams.fromPublisher(
-                    //get data by observe not like below in sessionManager
-                    mainApi.getQuakes("geojson","time","100","6","10")
+
+
+                    mainApi.getQuakes("geojson","time",items,minMagnitude,maxMagnitude)
 
                             .onErrorReturn(new Function<Throwable, Features>() {
                                 @Override
