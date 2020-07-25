@@ -1,5 +1,7 @@
 package com.example.testing;
 
+import com.example.testing.ui.main.quakesFragment.QuakesRecycleAdapter;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,5 +17,7 @@ public class ExampleUnitTest {
 
         assertEquals(4, 2+2);
     }
+
+
 
 }

@@ -3,7 +3,6 @@ package com.example.testing.ui.settings.settingsFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -12,12 +11,6 @@ import android.text.InputType;
 import android.widget.EditText;
 import com.example.testing.R;
 
-import javax.inject.Inject;
-
-/**
- * A simple {@link Fragment} subclass.
- *
- */
 public class SettingsFragment extends PreferenceFragmentCompat implements androidx.preference.Preference.OnPreferenceChangeListener{
 
     @Override
